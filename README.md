@@ -16,12 +16,12 @@ Attenzione: l'azienda sopracitata è ipotetica.
 Vengono dati 3 file csv di partenza che verranno importati: utenti.csv, viaggi.csv e prenotazioni.csv.
 Il software permetterà di effettuare le seguenti azioni:
 
-1. Visualizzare tutti i viaggi dell'interno del sistema
-2. Prenotare un viaggio esistente
-3. Disdire la prenotazione di un viaggio
-4. Aggiungere un nuovo utente
-5. Esportare un file con i viaggi disponibili
-6. Con il comando 0, uscire dal programma
+1. Visualizzare tutti i viaggi dell'interno del sistema -> comando 1
+2. Prenotare un viaggio esistente -> comando 2
+3. Disdire la prenotazione di un viaggio -> comando 3
+4. Aggiungere un nuovo utente -> comando 4
+5. Esportare un file con i viaggi disponibili -> comando 5
+6. Uscire dal programma -> comando 0
 
 ## Struttura tecnica del progetto
 
@@ -29,7 +29,7 @@ Il software permetterà di effettuare le seguenti azioni:
 Si basa su 5 package: Controller, Service, FilesUploaded, Model, Utilities.
 
 
-* Controller: contiene la classe Controller che a sua volta contiene il metodo principale di start(), il cuore del software, basato su un do-while-loop, dal quale si esce quando l’utente immette l’input 0. In pratica qui si chiede all’utente di immettere un input per poter scegliere cosa fare. Vengono gestite le diverse eccezioni come inserimento di stringhe (in questa fase si accettano solo numeri interi) o numeri interi non compresi tra lo 0 e il 5.
+* Controller: contiene la classe Controller che a sua volta contiene il metodo principale di start(), il cuore del software, basato su un do-while-loop, dal quale si esce quando l’utente immette l’input 0. In pratica qui si chiede all’utente di immettere un numero intero compreso tra 0 e 5 in input per poter scegliere cosa fare. Vengono gestite le diverse eccezioni, come ad esempio se l'utente immette una stringa (in questa fase si accettano solo numeri interi) o numeri interi non compresi tra lo 0 e il 5.
 
 
 * Service: contiene la classe Service che, quando istanziata dal Controller, istanzia a sua volta per la prima volta i 3 file csv, caricandoli dalle rispettive classi (Utente, Viaggi, Prenotazioni). Contiene 2 metodi principali:
@@ -38,7 +38,7 @@ Si basa su 5 package: Controller, Service, FilesUploaded, Model, Utilities.
 
 * FilesUploaded: contiente la classe padre Uploader e le tre classi figlie, una per ogni file csv da caricare (Utente, Viaggi, Prenotazioni):
 	* Uploader: il costruttore, gestisce il caricamento del file chiamando la classe utilities CSVReaderInJava e passandogli in input il nome del file e il delimitatore. Le caratteristiche di questo costruttore ovviamente verranno ereditate dalle figlie e implementate.
-Inoltre contiene il metodo toString che permette di stampare a schermo il contenuto del file csv caricato in formato tabella. Per permettere ciò viene utilizzata la classe CommandLineTable, siccome richiede in input i dati specifici dei file, ho creato anche il metodo astratto ListOfValueRecord che ogni classe figlia implementa.
+Inoltre contiene il metodo toString che permette di stampare a schermo il contenuto del file csv caricato in formato tabella. Per permettere ciò viene utilizzata la classe CommandLineTable. Siccome richiede in input i dati specifici dei file, ho creato anche il metodo astratto ListOfValueRecord che ogni classe figlia implementa.
 	* Utente: contiene una serie di metodi setter e getter utili per la risoluzione ottimale dei diversi comandi;
 	* Prenotazioni: come Utente;
 	* Viaggi: come Utente.
