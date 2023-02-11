@@ -59,7 +59,8 @@ Contiene anche il metodo loadCsvFirstRow che legge solo l’header del file csv,
 
 ## How To Use
 
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+Per clonare e provare il software avrai bisogno di Apache Maven.
+Apri il terminale, posizionati nella cartella che preferisci e segui questi step:
 
 ```bash
 # Clone this repository
