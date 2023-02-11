@@ -38,14 +38,14 @@ Si basa su 5 package: Controller, Service, FilesUploaded, Model, Utilities.
 
 * FilesUploaded: contiente la classe padre Uploader e le tre classi figlie, una per ogni file csv da caricare (Utente, Viaggi, Prenotazioni):
 	* Uploader: il costruttore, gestisce il caricamento del file chiamando la classe utilities CSVReaderInJava e passandogli in input il nome del file e il delimitatore. Le caratteristiche di questo costruttore ovviamente verranno ereditate dalle figlie e implementate.
-Inoltre contiene il metodo toString che permette di stampare a schermo il contenuto del file csv caricato in formato tabella. Per permettere ciò viene utilizzata la classe CommandLineTable, siccome richiede in input i dati specifici dei file, ho creato anche il metodo astratto ListOfValueRecord che ogni classe figlia implementa. Lascio uno screen di esempio del risultato se lo si dovesse chiamare:
+Inoltre contiene il metodo toString che permette di stampare a schermo il contenuto del file csv caricato in formato tabella. Per permettere ciò viene utilizzata la classe CommandLineTable, siccome richiede in input i dati specifici dei file, ho creato anche il metodo astratto ListOfValueRecord che ogni classe figlia implementa.
 	* Utente: contiene una serie di metodi setter e getter utili per la risoluzione ottimale dei diversi comandi;
 	* Prenotazioni: come Utente;
 	* Viaggi: come Utente.
 
 
 * Model: contiene tante classi tanti quanti sono i comandi disponibili
-	* Comando1: il metodo displayTuttiIViaggi stampa a schermo tutti i viaggi, disponibili e non, con alcuni dati utili richiesti. La logica che segue è molto semplice, tramite un loop entra nel Map di Viaggi ed estrae i dati che servono. Se il viaggio è prenotato, allora entra in un altro loop sul Map di Prenotazioni per estrarre il nome dell’utente che l’ha prenotato. Lascio screen di esempio:
+	* Comando1: il metodo displayTuttiIViaggi stampa a schermo tutti i viaggi, disponibili e non, con alcuni dati utili richiesti. La logica che segue è molto semplice, tramite un loop entra nel Map di Viaggi ed estrae i dati che servono. Se il viaggio è prenotato, allora entra in un altro loop sul Map di Prenotazioni per estrarre il nome dell’utente che l’ha prenotato.
 	* Comando2: tramite il metodo prenotaViaggio permette ad un utente di prenotare un viaggio ma solo se disponibile. Anche qui ci sono 2 do-while-loop che gestiscono gli input da parte dell’utente. Per non ripetere porzioni di codice simile, ho deciso che i loop e le relative eccezioni vengono gestite dal metodo doWhileLoopInteger, in quanto entrambi richiedono un numero intero in input dall’utente. A prenotazione avvenuta, vado ad aggiornare il campo Disponibilità dell’istanza prenotazioni.
 	* Comando3: permette di disdire una prenotazione. A disdetta avvenuta, aggiorno l’istanza prenotazioni rimuovendo la riga.
 	* Comando4: permette di aggiungere un nuovo utente all’istanza utenti. Come nel Comando3, anche qui la gestione di tutti i do-while-loop richiesti è affidata ad un metodo apposito chiamato doWhileLoopString in modo da non dover ripetere troppo codice. A operazione conclusa, il metodo aggiungiNuovoUtente andrà ad aggiornare l’istanza utenti aggiungendo la nuova riga e assegnando automaticamente l’ID del nuovo utente, stampandolo a schermo;
